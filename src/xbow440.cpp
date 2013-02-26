@@ -1,4 +1,4 @@
-
+#include "ros/ros.h"
 #include "xbow440/xbow440.h"
 using namespace xbow440;
 
@@ -114,6 +114,7 @@ void XBOW440::ReadSerialPort() {
 
 		// check for header and first of packet type
 		if ((buffer[0]!='U')&&(buffer[1]!='U')&&(buffer[2]!=0x53)) {
+		    ROS_INFO("buffer[0] %#x buffer[1] %#x buffer[2] %#x", buffer[0], buffer[1], buffer[2]);
 			Resync();
 			continue;
 		}
